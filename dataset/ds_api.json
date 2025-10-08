@@ -1,0 +1,21 @@
+{
+	"name": "ds_api",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_datalakeadfpro",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Pokemon.json",
+				"folderPath": "API",
+				"fileSystem": "adfprosink"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,23 @@
+{
+	"name": "ds_emptyjson",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_datalakeadfpro",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "empty.json",
+				"folderPath": "monitor",
+				"fileSystem": "adfprosource"
+			}
+		},
+		"schema": {
+			"type": "object"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

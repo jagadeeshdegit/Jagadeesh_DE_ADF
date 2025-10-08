@@ -1,0 +1,19 @@
+{
+	"name": "ds_parquetadfpro",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_datalakeadfpro",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
