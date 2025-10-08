@@ -1,0 +1,6 @@
+{
+	"name": "jaga-selfhosted",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
