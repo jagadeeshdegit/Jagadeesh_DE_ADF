@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf1jaga"
+		},
+		"linkedserviceDL_accountKey": {
+			"value": ""
+		},
+		"linkedservice_Storageaccountadf1_connectionString": {
+			"value": ""
+		},
+		"ls_database_password": {
+			"value": ""
+		},
+		"ls_datalakeadfpro_accountKey": {
+			"value": ""
+		},
+		"linkedserviceDL_properties_typeProperties_url": {
+			"value": "https://storageaccountadf1.dfs.core.windows.net/"
+		},
+		"linkedservice_git_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com"
+		},
+		"ls_database_properties_typeProperties_server": {
+			"value": "adf1server.database.windows.net"
+		},
+		"ls_database_properties_typeProperties_database": {
+			"value": "adf1db"
+		},
+		"ls_database_properties_typeProperties_userName": {
+			"value": "adf1admin"
+		},
+		"ls_datalakeadfpro_properties_typeProperties_url": {
+			"value": "https://storageaccountadf1.dfs.core.windows.net/"
+		},
+		"ls_restapi_properties_typeProperties_url": {
+			"value": "https://pokeapi.co/api/v2/pokemon"
+		},
+		"schedule_properties_scheduled_parameters_schema": {
+			"value": "source"
+		},
+		"schedule_properties_scheduled_parameters_table": {
+			"value": "Orders"
+		},
+		"schedule_properties_scheduled_parameters_backdate": {
+			"value": "2025-09-24"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
