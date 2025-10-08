@@ -1,0 +1,81 @@
+{
+	"name": "deltaflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_csv_dynamic",
+						"type": "DatasetReference"
+					},
+					"name": "source"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "ls_datalakeadfpro",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sinkDelta"
+				}
+			],
+			"transformations": [
+				{
+					"name": "upperstate"
+				},
+				{
+					"name": "selectCols"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          location_id as short,",
+				"          city as string,",
+				"          state as string,",
+				"          country as string,",
+				"          latitude as double,",
+				"          longitude as double,",
+				"          last_updated_timestamp as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source",
+				"source derive(state = upper(state)) ~> upperstate",
+				"upperstate select(mapColumn(",
+				"          location_id,",
+				"          city,",
+				"          state,",
+				"          country,",
+				"          last_updated_timestamp",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectCols",
+				"selectCols alterRow(upsertIf(1==1)) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'adfprosink',",
+				"     folderPath: 'Deltasink',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: false,",
+				"     updateable: false,",
+				"     upsertable: true,",
+				"     keys:['location_id'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkDelta"
+			]
+		}
+	}
+}
